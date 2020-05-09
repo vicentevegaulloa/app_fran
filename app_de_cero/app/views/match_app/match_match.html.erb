@@ -1,0 +1,7 @@
+<h1>MATCHAPP Match</h1>
+
+<% @users.each do |user| %>
+  <% if user != @me %>
+    <h2><%= user.name %></h2>
+  <% end %>
+<% end %>

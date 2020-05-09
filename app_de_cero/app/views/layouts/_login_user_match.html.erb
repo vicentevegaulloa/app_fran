@@ -1,0 +1,6 @@
+<% if signed_in? %>
+  <%= link_to "Salir", destroy_match_user_session_path, method: :delete, :class => "btn btn-inverse" %>
+<% else %>
+  <%= link_to "Registrarse a Match", new_match_user_registration_path, :class => "center"%><br>
+  <%= link_to "Ingresar a Match", new_match_user_session_path, :class => "center"%>
+<% end %>

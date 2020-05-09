@@ -1,0 +1,7 @@
+<h1>MATCHAPP Perfil</h1>
+<h1><%= @user.email %></h1>
+<% if @user.name %>
+  <h1><%= @user.name %></h1>
+<% end %>
+<%= link_to "Edita tu Perfil", edit_match_user_path(@user)  %>
+<%= link_to "Destruye tu Cuenta", match_user_path(@user), :method => :delete  %>

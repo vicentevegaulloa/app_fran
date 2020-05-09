@@ -1,0 +1,13 @@
+<% if @local %>
+  <h1>LOCALAPP Mi Local</h1>
+  <h1><%= @local.name %></h1>
+  <h2><%= @local.rating %></h2>
+  <h2><%= @local.description %></h2>
+  <%= link_to "Edita tus datos personales", edit_local_user_path(@local_user)  %><br>
+  <%= link_to "Edita tu Local", edit_local_path(@local)  %><br>
+  <%= link_to "Destruye tu Local", local_path(@local), :method => :delete  %><br>
+  <%= link_to "Destruye tu Cuenta", local_user_path(@local_user), :method => :delete  %>
+<% else %>
+  <h1>No tienes un Local</h1>
+  <%= link_to "Crea tu Local", new_local_path  %>
+<% end %>

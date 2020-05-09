@@ -1,0 +1,11 @@
+<h1>LOCALAPP Home</h1>
+<% if @local_user.name %>
+  <h1>Hola <%= @local_user.name %></h1>
+<% end %>
+
+<h1><%= @local_user.email %></h1>
+<% if @local %>
+  <h1><%= @local.name %></h1>
+<% else %>
+  <%= link_to "Crea tu Local", new_local_path  %>
+<%end%>

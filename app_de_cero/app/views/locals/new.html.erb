@@ -1,0 +1,17 @@
+<h1>Tu nuevo local</h1>
+
+<% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <p style="color: red"><%= error %></p>
+    <% end %>
+<% end %>
+
+
+<%= form_for @local do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.submit %>
+<% end %>
