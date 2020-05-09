@@ -21,16 +21,8 @@
     <%= form.text_area :body %>
   </div>
 
-  <div class="field">
-    <%= form.label :match_user_id %>
-    <%= form.text_field :match_user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :local_id %>
-    <%= form.text_field :local_id %>
-  </div>
-
+  <%= form.hidden_field :local_id, value: @local_id%>
+  <%= form.hidden_field :match_user_id, value: @writer.id %>
   <div class="actions">
     <%= form.submit %>
   </div>

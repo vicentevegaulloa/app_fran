@@ -48,6 +48,10 @@ class LocalAppController < ApplicationController
   end
 
   def local_muro
+    if current_local_user.local_id
+      @comentarios = Comment.all
+      @local_user = current_local_user
+    end
   end
 
   def local_mi_local

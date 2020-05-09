@@ -34,8 +34,10 @@ ActiveRecord::Schema.define(version: 2020_05_09_011451) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "local_id"
     t.string "name"
     t.index ["email"], name: "index_local_users_on_email", unique: true
+    t.index ["local_id"], name: "index_local_users_on_local_id"
     t.index ["reset_password_token"], name: "index_local_users_on_reset_password_token", unique: true
   end
 

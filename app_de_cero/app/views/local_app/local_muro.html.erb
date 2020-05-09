@@ -1,2 +1,7 @@
 <h1>LOCALAPP Muro</h1>
 <h2>Aqui deberian ir los comentarios</h2>
+<% @comentarios.each do |comentario| %>
+  <% if comentario.local_id == @local_user.local_id %>
+    <h2><%= comentario.body %></h2>
+  <% end %>
+<% end %>

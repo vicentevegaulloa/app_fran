@@ -14,6 +14,8 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
+    @local_id = params[:local_id]
+    @writer = current_match_user
     @comment = Comment.new
   end
 
@@ -24,17 +26,18 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(comment_params)
+    @comment = Comment.create(comment_params)
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @comment.save
+    #     format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+    #     format.json { render :show, status: :created, location: @comment }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @comment.errors, status: :unprocessable_entity }
+    #   end
+    # end
+    redirect_to match_locales_path
   end
 
   # PATCH/PUT /comments/1
@@ -69,6 +72,6 @@ class CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.require(:comment).permit(:stars, :body, :match_user_id, :local_id)
+      params.require(:comment).permit(:stars, :body, :local_id, :match_user_id)
     end
 end
