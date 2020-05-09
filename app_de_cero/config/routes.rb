@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   get 'match_users/index'
   get 'match_users/new'
   get 'match_users/create'

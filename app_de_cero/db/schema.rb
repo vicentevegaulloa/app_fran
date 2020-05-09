@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_202138) do
+ActiveRecord::Schema.define(version: 2020_05_09_011451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "stars"
+    t.text "body"
+    t.bigint "match_user_id"
+    t.bigint "local_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["local_id"], name: "index_comments_on_local_id"
+    t.index ["match_user_id"], name: "index_comments_on_match_user_id"
+  end
 
   create_table "local_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,10 +34,8 @@ ActiveRecord::Schema.define(version: 2020_05_04_202138) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "local_id"
     t.string "name"
     t.index ["email"], name: "index_local_users_on_email", unique: true
-    t.index ["local_id"], name: "index_local_users_on_local_id"
     t.index ["reset_password_token"], name: "index_local_users_on_reset_password_token", unique: true
   end
 
@@ -53,5 +62,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_202138) do
     t.index ["reset_password_token"], name: "index_match_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "locals"
+  add_foreign_key "comments", "match_users"
   add_foreign_key "locals", "local_users"
 end

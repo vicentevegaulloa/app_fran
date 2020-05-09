@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Stars:</strong>
+  <%= @comment.stars %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @comment.body %>
+</p>
+
+<p>
+  <strong>Match user:</strong>
+  <%= @comment.match_user %>
+</p>
+
+<p>
+  <strong>Local:</strong>
+  <%= @comment.local %>
+</p>
+
+<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Back', comments_path %>
